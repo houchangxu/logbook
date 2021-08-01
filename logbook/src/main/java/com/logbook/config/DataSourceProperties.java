@@ -5,8 +5,8 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
 @Data
-@ConfigurationProperties("spring.datasource")
 @Configuration
+@ConfigurationProperties("spring.datasource")
 public class DataSourceProperties {
     private String url;
     private String username;

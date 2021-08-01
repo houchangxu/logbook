@@ -21,7 +21,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.logbook.business.user.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.logbook.user.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -30,14 +30,14 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.logbook.business.user.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.logbook.user" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
         <table tableName="log_user" domainObjectName="LogUserEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="introduction" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="mark" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="user_background" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="image" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="video_show" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
 
     </context>

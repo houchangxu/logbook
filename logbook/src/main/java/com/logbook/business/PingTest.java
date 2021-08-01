@@ -1,4 +1,4 @@
-package com.logbook.business.user;
+package com.logbook.business;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;

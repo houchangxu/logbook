@@ -1,0 +1,414 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logbook.business.mapper.LogPostEntityMapper">
+    <resultMap id="BaseResultMap" type="com.logbook.business.model.LogPostEntity">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="tid" jdbcType="INTEGER" property="tid"/>
+        <result column="cid" jdbcType="INTEGER" property="cid"/>
+        <result column="to_reply_id" jdbcType="INTEGER" property="toReplyId"/>
+        <result column="to_reply_uid" jdbcType="INTEGER" property="toReplyUid"/>
+        <result column="is_thread" jdbcType="BIT" property="isThread"/>
+        <result column="level" jdbcType="TINYINT" property="level"/>
+        <result column="position" jdbcType="INTEGER" property="position"/>
+        <result column="author_uid" jdbcType="INTEGER" property="authorUid"/>
+        <result column="title" jdbcType="CHAR" property="title"/>
+        <result column="create_time" jdbcType="INTEGER" property="createTime"/>
+        <result column="update_time" jdbcType="INTEGER" property="updateTime"/>
+        <result column="status" jdbcType="TINYINT" property="status"/>
+        <result column="attachment_id" jdbcType="INTEGER" property="attachmentId"/>
+        <result column="is_anonymous" jdbcType="BIT" property="isAnonymous"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="is_top" jdbcType="TINYINT" property="isTop"/>
+        <result column="comment_count" jdbcType="INTEGER" property="commentCount"/>
+        <result column="support_count" jdbcType="INTEGER" property="supportCount"/>
+        <result column="from" jdbcType="VARCHAR" property="from"/>
+        <result column="is_hide" jdbcType="BIT" property="isHide"/>
+        <result column="is_essence" jdbcType="BIT" property="isEssence"/>
+        <result column="is_recommend" jdbcType="BIT" property="isRecommend"/>
+        <result column="collect_count" jdbcType="INTEGER" property="collectCount"/>
+        <result column="image" jdbcType="VARCHAR" property="image"/>
+        <result column="video_show" jdbcType="VARCHAR" property="videoShow"/>
+        <result column="del_time" jdbcType="INTEGER" property="delTime"/>
+        <result column="del_user" jdbcType="VARCHAR" property="delUser"/>
+        <result column="is_vest" jdbcType="INTEGER" property="isVest"/>
+        <result column="event_id" jdbcType="INTEGER" property="eventId"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, tid, cid, to_reply_id, to_reply_uid, is_thread, `level`, `position`, author_uid,
+    title, create_time, update_time, status, attachment_id, is_anonymous, content, is_top, 
+    comment_count, support_count, `from`, is_hide, is_essence, is_recommend, collect_count,
+    image, video_show, del_time, del_user, is_vest, event_id
+  </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from log_post
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log_post
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.logbook.business.model.LogPostEntity">
+    insert into log_post (id, tid, cid, 
+      to_reply_id, to_reply_uid, is_thread, 
+      `level`, `position`, author_uid,
+      title, create_time, update_time, 
+      status, attachment_id, is_anonymous, 
+      content, is_top, comment_count, 
+      support_count, `from`, is_hide,
+      is_essence, is_recommend, collect_count, 
+      image, video_show, del_time, 
+      del_user, is_vest, event_id
+      )
+    values (#{id,jdbcType=INTEGER}, #{tid,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, 
+      #{toReplyId,jdbcType=INTEGER}, #{toReplyUid,jdbcType=INTEGER}, #{isThread,jdbcType=BIT}, 
+      #{level,jdbcType=TINYINT}, #{position,jdbcType=INTEGER}, #{authorUid,jdbcType=INTEGER}, 
+      #{title,jdbcType=CHAR}, #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}, 
+      #{status,jdbcType=TINYINT}, #{attachmentId,jdbcType=INTEGER}, #{isAnonymous,jdbcType=BIT}, 
+      #{content,jdbcType=VARCHAR}, #{isTop,jdbcType=TINYINT}, #{commentCount,jdbcType=INTEGER}, 
+      #{supportCount,jdbcType=INTEGER}, #{from,jdbcType=VARCHAR}, #{isHide,jdbcType=BIT}, 
+      #{isEssence,jdbcType=BIT}, #{isRecommend,jdbcType=BIT}, #{collectCount,jdbcType=INTEGER}, 
+      #{image,jdbcType=VARCHAR}, #{videoShow,jdbcType=VARCHAR}, #{delTime,jdbcType=INTEGER}, 
+      #{delUser,jdbcType=VARCHAR}, #{isVest,jdbcType=INTEGER}, #{eventId,jdbcType=INTEGER}
+      )
+  </insert>
+    <insert id="insertSelective" parameterType="com.logbook.business.model.LogPostEntity">
+        insert into log_post
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="tid != null">
+                tid,
+            </if>
+            <if test="cid != null">
+                cid,
+            </if>
+            <if test="toReplyId != null">
+                to_reply_id,
+            </if>
+            <if test="toReplyUid != null">
+                to_reply_uid,
+            </if>
+            <if test="isThread != null">
+                is_thread,
+            </if>
+            <if test="level != null">
+                `level`,
+            </if>
+            <if test="position != null">
+                `position`,
+            </if>
+            <if test="authorUid != null">
+                author_uid,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="updateTime != null">
+                update_time,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="attachmentId != null">
+                attachment_id,
+            </if>
+            <if test="isAnonymous != null">
+                is_anonymous,
+            </if>
+            <if test="content != null">
+                content,
+            </if>
+            <if test="isTop != null">
+                is_top,
+            </if>
+            <if test="commentCount != null">
+                comment_count,
+            </if>
+            <if test="supportCount != null">
+                support_count,
+            </if>
+            <if test="from != null">
+                `from`,
+            </if>
+            <if test="isHide != null">
+                is_hide,
+            </if>
+            <if test="isEssence != null">
+                is_essence,
+            </if>
+            <if test="isRecommend != null">
+                is_recommend,
+            </if>
+            <if test="collectCount != null">
+                collect_count,
+            </if>
+            <if test="image != null">
+                image,
+            </if>
+            <if test="videoShow != null">
+                video_show,
+            </if>
+            <if test="delTime != null">
+                del_time,
+            </if>
+            <if test="delUser != null">
+                del_user,
+            </if>
+            <if test="isVest != null">
+                is_vest,
+            </if>
+            <if test="eventId != null">
+                event_id,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="tid != null">
+                #{tid,jdbcType=INTEGER},
+            </if>
+            <if test="cid != null">
+                #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="toReplyId != null">
+                #{toReplyId,jdbcType=INTEGER},
+            </if>
+            <if test="toReplyUid != null">
+                #{toReplyUid,jdbcType=INTEGER},
+            </if>
+            <if test="isThread != null">
+                #{isThread,jdbcType=BIT},
+            </if>
+            <if test="level != null">
+                #{level,jdbcType=TINYINT},
+            </if>
+            <if test="position != null">
+                #{position,jdbcType=INTEGER},
+            </if>
+            <if test="authorUid != null">
+                #{authorUid,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                #{title,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null">
+                #{updateTime,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="attachmentId != null">
+                #{attachmentId,jdbcType=INTEGER},
+            </if>
+            <if test="isAnonymous != null">
+                #{isAnonymous,jdbcType=BIT},
+            </if>
+            <if test="content != null">
+                #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="isTop != null">
+                #{isTop,jdbcType=TINYINT},
+            </if>
+            <if test="commentCount != null">
+                #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="supportCount != null">
+                #{supportCount,jdbcType=INTEGER},
+            </if>
+            <if test="from != null">
+                #{from,jdbcType=VARCHAR},
+            </if>
+            <if test="isHide != null">
+                #{isHide,jdbcType=BIT},
+            </if>
+            <if test="isEssence != null">
+                #{isEssence,jdbcType=BIT},
+            </if>
+            <if test="isRecommend != null">
+                #{isRecommend,jdbcType=BIT},
+            </if>
+            <if test="collectCount != null">
+                #{collectCount,jdbcType=INTEGER},
+            </if>
+            <if test="image != null">
+                #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="videoShow != null">
+                #{videoShow,jdbcType=VARCHAR},
+            </if>
+            <if test="delTime != null">
+                #{delTime,jdbcType=INTEGER},
+            </if>
+            <if test="delUser != null">
+                #{delUser,jdbcType=VARCHAR},
+            </if>
+            <if test="isVest != null">
+                #{isVest,jdbcType=INTEGER},
+            </if>
+            <if test="eventId != null">
+                #{eventId,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.logbook.business.model.LogPostEntity">
+        update log_post
+        <set>
+            <if test="tid != null">
+                tid = #{tid,jdbcType=INTEGER},
+            </if>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=INTEGER},
+            </if>
+            <if test="toReplyId != null">
+                to_reply_id = #{toReplyId,jdbcType=INTEGER},
+            </if>
+            <if test="toReplyUid != null">
+                to_reply_uid = #{toReplyUid,jdbcType=INTEGER},
+            </if>
+            <if test="isThread != null">
+                is_thread = #{isThread,jdbcType=BIT},
+            </if>
+            <if test="level != null">
+                `level` = #{level,jdbcType=TINYINT},
+            </if>
+            <if test="position != null">
+                `position`` = #{position,jdbcType=INTEGER},
+            </if>
+            <if test="authorUid != null">
+                author_uid = #{authorUid,jdbcType=INTEGER},
+            </if>
+            <if test="title != null">
+                title = #{title,jdbcType=CHAR},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=INTEGER},
+            </if>
+            <if test="updateTime != null">
+                update_time = #{updateTime,jdbcType=INTEGER},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="attachmentId != null">
+                attachment_id = #{attachmentId,jdbcType=INTEGER},
+            </if>
+            <if test="isAnonymous != null">
+                is_anonymous = #{isAnonymous,jdbcType=BIT},
+            </if>
+            <if test="content != null">
+                content = #{content,jdbcType=VARCHAR},
+            </if>
+            <if test="isTop != null">
+                is_top = #{isTop,jdbcType=TINYINT},
+            </if>
+            <if test="commentCount != null">
+                comment_count = #{commentCount,jdbcType=INTEGER},
+            </if>
+            <if test="supportCount != null">
+                support_count = #{supportCount,jdbcType=INTEGER},
+            </if>
+            <if test="from != null">
+                `from` = #{from,jdbcType=VARCHAR},
+            </if>
+            <if test="isHide != null">
+                is_hide = #{isHide,jdbcType=BIT},
+            </if>
+            <if test="isEssence != null">
+                is_essence = #{isEssence,jdbcType=BIT},
+            </if>
+            <if test="isRecommend != null">
+                is_recommend = #{isRecommend,jdbcType=BIT},
+            </if>
+            <if test="collectCount != null">
+                collect_count = #{collectCount,jdbcType=INTEGER},
+            </if>
+            <if test="image != null">
+                image = #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="videoShow != null">
+                video_show = #{videoShow,jdbcType=VARCHAR},
+            </if>
+            <if test="delTime != null">
+                del_time = #{delTime,jdbcType=INTEGER},
+            </if>
+            <if test="delUser != null">
+                del_user = #{delUser,jdbcType=VARCHAR},
+            </if>
+            <if test="isVest != null">
+                is_vest = #{isVest,jdbcType=INTEGER},
+            </if>
+            <if test="eventId != null">
+                event_id = #{eventId,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.logbook.business.model.LogPostEntity">
+    update log_post
+    set tid = #{tid,jdbcType=INTEGER},
+      cid = #{cid,jdbcType=INTEGER},
+      to_reply_id = #{toReplyId,jdbcType=INTEGER},
+      to_reply_uid = #{toReplyUid,jdbcType=INTEGER},
+      is_thread = #{isThread,jdbcType=BIT},
+      `level` = #{level,jdbcType=TINYINT},
+      `position` = #{position,jdbcType=INTEGER},
+      author_uid = #{authorUid,jdbcType=INTEGER},
+      title = #{title,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      status = #{status,jdbcType=TINYINT},
+      attachment_id = #{attachmentId,jdbcType=INTEGER},
+      is_anonymous = #{isAnonymous,jdbcType=BIT},
+      content = #{content,jdbcType=VARCHAR},
+      is_top = #{isTop,jdbcType=TINYINT},
+      comment_count = #{commentCount,jdbcType=INTEGER},
+      support_count = #{supportCount,jdbcType=INTEGER},
+      `from` = #{from,jdbcType=VARCHAR},
+      is_hide = #{isHide,jdbcType=BIT},
+      is_essence = #{isEssence,jdbcType=BIT},
+      is_recommend = #{isRecommend,jdbcType=BIT},
+      collect_count = #{collectCount,jdbcType=INTEGER},
+      image = #{image,jdbcType=VARCHAR},
+      video_show = #{videoShow,jdbcType=VARCHAR},
+      del_time = #{delTime,jdbcType=INTEGER},
+      del_user = #{delUser,jdbcType=VARCHAR},
+      is_vest = #{isVest,jdbcType=INTEGER},
+      event_id = #{eventId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+
+
+
+    <sql id="Page_Column_List">
+    lp.id, tid, cid, to_reply_id, to_reply_uid, is_thread, `level`, `position`, author_uid,
+    title, create_time, update_time, status, attachment_id, is_anonymous, content, is_top,
+    comment_count, support_count, `from`, is_hide, is_essence, is_recommend, collect_count,
+    image, video_show, del_time, del_user, is_vest, event_id
+  </sql>
+    <select id="getPage" resultMap="BaseResultMap">
+        select
+        <include refid="Page_Column_List"/>
+        from log_post lp
+        left join log_user lu on lp.author_uid = lu.id
+        where 1=1
+        <if test="param.cid != null">
+            and cid=#{param.cid}
+        </if>
+        <if test="param.tid != null">
+            and tid=#{param.tid}
+        </if>
+        limit #{param.pageNo},#{param.limit}
+    </select>
+</mapper>

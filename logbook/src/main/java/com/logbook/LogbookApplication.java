@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@MapperScan("com.logbook.business.*.mapper")
-@ComponentScan(basePackages = {"com.logbook.config","com.logbook.business"})
+@MapperScan("com.logbook.*.mapper")
+@ComponentScan(basePackages = {"com.logbook.config","com.logbook.business","com.logbook.user"})
 public class LogbookApplication {
 
 	public static void main(String[] args) {
