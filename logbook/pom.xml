@@ -108,7 +108,7 @@
                     <configurationFile>src/main/resources/mybatis-generator.xml</configurationFile>
                     <verbose>true</verbose>
                     <overwrite>true</overwrite>
-                    <skip>true</skip>
+                    <skip>false</skip>
                 </configuration>
                 <executions>
                     <execution>

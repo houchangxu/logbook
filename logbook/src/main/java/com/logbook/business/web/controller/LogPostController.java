@@ -1,7 +1,7 @@
 package com.logbook.business.web.controller;
 
 import com.logbook.business.service.LogPostService;
-import com.logbook.business.web.domian.LogPostVo;
+import com.logbook.business.web.domain.LogPostVo;
 import com.logbook.business.web.request.LogPostRequestParam;
 import com.logbook.common.Response;
 import io.swagger.annotations.Api;

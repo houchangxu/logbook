@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logbook.business.mapper.LogThreadDraftEntityMapper">
+  <resultMap id="BaseResultMap" type="com.logbook.business.model.LogThreadDraftEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="is_announce" jdbcType="BIT" property="isAnnounce" />
+    <result column="post_id" jdbcType="INTEGER" property="postId" />
+    <result column="read_perm" jdbcType="TINYINT" property="readPerm" />
+    <result column="author_uid" jdbcType="INTEGER" property="authorUid" />
+    <result column="title" jdbcType="CHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="last_post_time" jdbcType="INTEGER" property="lastPostTime" />
+    <result column="last_post_uid" jdbcType="INTEGER" property="lastPostUid" />
+    <result column="update_time" jdbcType="INTEGER" property="updateTime" />
+    <result column="view_count" jdbcType="INTEGER" property="viewCount" />
+    <result column="reply_count" jdbcType="INTEGER" property="replyCount" />
+    <result column="support_count" jdbcType="INTEGER" property="supportCount" />
+    <result column="share_count" jdbcType="INTEGER" property="shareCount" />
+    <result column="collect_count" jdbcType="INTEGER" property="collectCount" />
+    <result column="sort" jdbcType="BIT" property="sort" />
+    <result column="high_light" jdbcType="BIT" property="highLight" />
+    <result column="is_essence" jdbcType="BIT" property="isEssence" />
+    <result column="is_top" jdbcType="BIT" property="isTop" />
+    <result column="attachment_id" jdbcType="INTEGER" property="attachmentId" />
+    <result column="is_verify" jdbcType="BIT" property="isVerify" />
+    <result column="stick_reply" jdbcType="BIT" property="stickReply" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="cover" jdbcType="VARCHAR" property="cover" />
+    <result column="class_id" jdbcType="INTEGER" property="classId" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="image" jdbcType="VARCHAR" property="image" />
+    <result column="from" jdbcType="VARCHAR" property="from" />
+    <result column="pos" jdbcType="VARCHAR" property="pos" />
+    <result column="position" jdbcType="INTEGER" property="position" />
+    <result column="product_id" jdbcType="VARCHAR" property="productId" />
+    <result column="is_massage" jdbcType="INTEGER" property="isMassage" />
+    <result column="video_id" jdbcType="VARCHAR" property="videoId" />
+    <result column="video_url" jdbcType="VARCHAR" property="videoUrl" />
+    <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason" />
+    <result column="delete_reason" jdbcType="VARCHAR" property="deleteReason" />
+    <result column="video_cover" jdbcType="VARCHAR" property="videoCover" />
+    <result column="del_user" jdbcType="VARCHAR" property="delUser" />
+    <result column="false_view" jdbcType="INTEGER" property="falseView" />
+    <result column="is_weibo" jdbcType="INTEGER" property="isWeibo" />
+    <result column="detail_top" jdbcType="INTEGER" property="detailTop" />
+    <result column="index_top" jdbcType="INTEGER" property="indexTop" />
+    <result column="is_new" jdbcType="INTEGER" property="isNew" />
+    <result column="oid" jdbcType="VARCHAR" property="oid" />
+    <result column="send_time" jdbcType="INTEGER" property="sendTime" />
+    <result column="keywords" jdbcType="VARCHAR" property="keywords" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, cid, type, is_announce, post_id, read_perm, author_uid, title, content, create_time, 
+    last_post_time, last_post_uid, update_time, view_count, reply_count, support_count, 
+    share_count, collect_count, sort, high_light, is_essence, is_top, attachment_id, 
+    is_verify, stick_reply, status, cover, class_id, summary, image, from, pos, position, 
+    product_id, is_massage, video_id, video_url, reject_reason, delete_reason, video_cover, 
+    del_user, false_view, is_weibo, detail_top, index_top, is_new, oid, send_time, keywords
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_thread_draft
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log_thread_draft
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.logbook.business.model.LogThreadDraftEntity">
+    insert into log_thread_draft (id, cid, type, 
+      is_announce, post_id, read_perm, 
+      author_uid, title, content, 
+      create_time, last_post_time, last_post_uid, 
+      update_time, view_count, reply_count, 
+      support_count, share_count, collect_count, 
+      sort, high_light, is_essence, is_top, 
+      attachment_id, is_verify, stick_reply, 
+      status, cover, class_id, 
+      summary, image, from, 
+      pos, position, product_id, 
+      is_massage, video_id, video_url, 
+      reject_reason, delete_reason, video_cover, 
+      del_user, false_view, is_weibo, 
+      detail_top, index_top, is_new, 
+      oid, send_time, keywords
+      )
+    values (#{id,jdbcType=INTEGER}, #{cid,jdbcType=INTEGER}, #{type,jdbcType=TINYINT}, 
+      #{isAnnounce,jdbcType=BIT}, #{postId,jdbcType=INTEGER}, #{readPerm,jdbcType=TINYINT}, 
+      #{authorUid,jdbcType=INTEGER}, #{title,jdbcType=CHAR}, #{content,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=INTEGER}, #{lastPostTime,jdbcType=INTEGER}, #{lastPostUid,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=INTEGER}, #{viewCount,jdbcType=INTEGER}, #{replyCount,jdbcType=INTEGER}, 
+      #{supportCount,jdbcType=INTEGER}, #{shareCount,jdbcType=INTEGER}, #{collectCount,jdbcType=INTEGER}, 
+      #{sort,jdbcType=BIT}, #{highLight,jdbcType=BIT}, #{isEssence,jdbcType=BIT}, #{isTop,jdbcType=BIT}, 
+      #{attachmentId,jdbcType=INTEGER}, #{isVerify,jdbcType=BIT}, #{stickReply,jdbcType=BIT}, 
+      #{status,jdbcType=TINYINT}, #{cover,jdbcType=VARCHAR}, #{classId,jdbcType=INTEGER}, 
+      #{summary,jdbcType=VARCHAR}, #{image,jdbcType=VARCHAR}, #{from,jdbcType=VARCHAR}, 
+      #{pos,jdbcType=VARCHAR}, #{position,jdbcType=INTEGER}, #{productId,jdbcType=VARCHAR}, 
+      #{isMassage,jdbcType=INTEGER}, #{videoId,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{rejectReason,jdbcType=VARCHAR}, #{deleteReason,jdbcType=VARCHAR}, #{videoCover,jdbcType=VARCHAR}, 
+      #{delUser,jdbcType=VARCHAR}, #{falseView,jdbcType=INTEGER}, #{isWeibo,jdbcType=INTEGER}, 
+      #{detailTop,jdbcType=INTEGER}, #{indexTop,jdbcType=INTEGER}, #{isNew,jdbcType=INTEGER}, 
+      #{oid,jdbcType=VARCHAR}, #{sendTime,jdbcType=INTEGER}, #{keywords,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.logbook.business.model.LogThreadDraftEntity">
+    insert into log_thread_draft
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="cid != null">
+        cid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="isAnnounce != null">
+        is_announce,
+      </if>
+      <if test="postId != null">
+        post_id,
+      </if>
+      <if test="readPerm != null">
+        read_perm,
+      </if>
+      <if test="authorUid != null">
+        author_uid,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastPostTime != null">
+        last_post_time,
+      </if>
+      <if test="lastPostUid != null">
+        last_post_uid,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="viewCount != null">
+        view_count,
+      </if>
+      <if test="replyCount != null">
+        reply_count,
+      </if>
+      <if test="supportCount != null">
+        support_count,
+      </if>
+      <if test="shareCount != null">
+        share_count,
+      </if>
+      <if test="collectCount != null">
+        collect_count,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="highLight != null">
+        high_light,
+      </if>
+      <if test="isEssence != null">
+        is_essence,
+      </if>
+      <if test="isTop != null">
+        is_top,
+      </if>
+      <if test="attachmentId != null">
+        attachment_id,
+      </if>
+      <if test="isVerify != null">
+        is_verify,
+      </if>
+      <if test="stickReply != null">
+        stick_reply,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="cover != null">
+        cover,
+      </if>
+      <if test="classId != null">
+        class_id,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+      <if test="from != null">
+        from,
+      </if>
+      <if test="pos != null">
+        pos,
+      </if>
+      <if test="position != null">
+        position,
+      </if>
+      <if test="productId != null">
+        product_id,
+      </if>
+      <if test="isMassage != null">
+        is_massage,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="rejectReason != null">
+        reject_reason,
+      </if>
+      <if test="deleteReason != null">
+        delete_reason,
+      </if>
+      <if test="videoCover != null">
+        video_cover,
+      </if>
+      <if test="delUser != null">
+        del_user,
+      </if>
+      <if test="falseView != null">
+        false_view,
+      </if>
+      <if test="isWeibo != null">
+        is_weibo,
+      </if>
+      <if test="detailTop != null">
+        detail_top,
+      </if>
+      <if test="indexTop != null">
+        index_top,
+      </if>
+      <if test="isNew != null">
+        is_new,
+      </if>
+      <if test="oid != null">
+        oid,
+      </if>
+      <if test="sendTime != null">
+        send_time,
+      </if>
+      <if test="keywords != null">
+        keywords,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="isAnnounce != null">
+        #{isAnnounce,jdbcType=BIT},
+      </if>
+      <if test="postId != null">
+        #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="readPerm != null">
+        #{readPerm,jdbcType=TINYINT},
+      </if>
+      <if test="authorUid != null">
+        #{authorUid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=CHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="lastPostTime != null">
+        #{lastPostTime,jdbcType=INTEGER},
+      </if>
+      <if test="lastPostUid != null">
+        #{lastPostUid,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyCount != null">
+        #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="supportCount != null">
+        #{supportCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null">
+        #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectCount != null">
+        #{collectCount,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=BIT},
+      </if>
+      <if test="highLight != null">
+        #{highLight,jdbcType=BIT},
+      </if>
+      <if test="isEssence != null">
+        #{isEssence,jdbcType=BIT},
+      </if>
+      <if test="isTop != null">
+        #{isTop,jdbcType=BIT},
+      </if>
+      <if test="attachmentId != null">
+        #{attachmentId,jdbcType=INTEGER},
+      </if>
+      <if test="isVerify != null">
+        #{isVerify,jdbcType=BIT},
+      </if>
+      <if test="stickReply != null">
+        #{stickReply,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="cover != null">
+        #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null">
+        #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="from != null">
+        #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        #{pos,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        #{position,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="isMassage != null">
+        #{isMassage,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectReason != null">
+        #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteReason != null">
+        #{deleteReason,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCover != null">
+        #{videoCover,jdbcType=VARCHAR},
+      </if>
+      <if test="delUser != null">
+        #{delUser,jdbcType=VARCHAR},
+      </if>
+      <if test="falseView != null">
+        #{falseView,jdbcType=INTEGER},
+      </if>
+      <if test="isWeibo != null">
+        #{isWeibo,jdbcType=INTEGER},
+      </if>
+      <if test="detailTop != null">
+        #{detailTop,jdbcType=INTEGER},
+      </if>
+      <if test="indexTop != null">
+        #{indexTop,jdbcType=INTEGER},
+      </if>
+      <if test="isNew != null">
+        #{isNew,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null">
+        #{oid,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null">
+        #{sendTime,jdbcType=INTEGER},
+      </if>
+      <if test="keywords != null">
+        #{keywords,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logbook.business.model.LogThreadDraftEntity">
+    update log_thread_draft
+    <set>
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="isAnnounce != null">
+        is_announce = #{isAnnounce,jdbcType=BIT},
+      </if>
+      <if test="postId != null">
+        post_id = #{postId,jdbcType=INTEGER},
+      </if>
+      <if test="readPerm != null">
+        read_perm = #{readPerm,jdbcType=TINYINT},
+      </if>
+      <if test="authorUid != null">
+        author_uid = #{authorUid,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=CHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="lastPostTime != null">
+        last_post_time = #{lastPostTime,jdbcType=INTEGER},
+      </if>
+      <if test="lastPostUid != null">
+        last_post_uid = #{lastPostUid,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="viewCount != null">
+        view_count = #{viewCount,jdbcType=INTEGER},
+      </if>
+      <if test="replyCount != null">
+        reply_count = #{replyCount,jdbcType=INTEGER},
+      </if>
+      <if test="supportCount != null">
+        support_count = #{supportCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null">
+        share_count = #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="collectCount != null">
+        collect_count = #{collectCount,jdbcType=INTEGER},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=BIT},
+      </if>
+      <if test="highLight != null">
+        high_light = #{highLight,jdbcType=BIT},
+      </if>
+      <if test="isEssence != null">
+        is_essence = #{isEssence,jdbcType=BIT},
+      </if>
+      <if test="isTop != null">
+        is_top = #{isTop,jdbcType=BIT},
+      </if>
+      <if test="attachmentId != null">
+        attachment_id = #{attachmentId,jdbcType=INTEGER},
+      </if>
+      <if test="isVerify != null">
+        is_verify = #{isVerify,jdbcType=BIT},
+      </if>
+      <if test="stickReply != null">
+        stick_reply = #{stickReply,jdbcType=BIT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="cover != null">
+        cover = #{cover,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null">
+        class_id = #{classId,jdbcType=INTEGER},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=VARCHAR},
+      </if>
+      <if test="from != null">
+        from = #{from,jdbcType=VARCHAR},
+      </if>
+      <if test="pos != null">
+        pos = #{pos,jdbcType=VARCHAR},
+      </if>
+      <if test="position != null">
+        position = #{position,jdbcType=INTEGER},
+      </if>
+      <if test="productId != null">
+        product_id = #{productId,jdbcType=VARCHAR},
+      </if>
+      <if test="isMassage != null">
+        is_massage = #{isMassage,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=VARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="rejectReason != null">
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteReason != null">
+        delete_reason = #{deleteReason,jdbcType=VARCHAR},
+      </if>
+      <if test="videoCover != null">
+        video_cover = #{videoCover,jdbcType=VARCHAR},
+      </if>
+      <if test="delUser != null">
+        del_user = #{delUser,jdbcType=VARCHAR},
+      </if>
+      <if test="falseView != null">
+        false_view = #{falseView,jdbcType=INTEGER},
+      </if>
+      <if test="isWeibo != null">
+        is_weibo = #{isWeibo,jdbcType=INTEGER},
+      </if>
+      <if test="detailTop != null">
+        detail_top = #{detailTop,jdbcType=INTEGER},
+      </if>
+      <if test="indexTop != null">
+        index_top = #{indexTop,jdbcType=INTEGER},
+      </if>
+      <if test="isNew != null">
+        is_new = #{isNew,jdbcType=INTEGER},
+      </if>
+      <if test="oid != null">
+        oid = #{oid,jdbcType=VARCHAR},
+      </if>
+      <if test="sendTime != null">
+        send_time = #{sendTime,jdbcType=INTEGER},
+      </if>
+      <if test="keywords != null">
+        keywords = #{keywords,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logbook.business.model.LogThreadDraftEntity">
+    update log_thread_draft
+    set cid = #{cid,jdbcType=INTEGER},
+      type = #{type,jdbcType=TINYINT},
+      is_announce = #{isAnnounce,jdbcType=BIT},
+      post_id = #{postId,jdbcType=INTEGER},
+      read_perm = #{readPerm,jdbcType=TINYINT},
+      author_uid = #{authorUid,jdbcType=INTEGER},
+      title = #{title,jdbcType=CHAR},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      last_post_time = #{lastPostTime,jdbcType=INTEGER},
+      last_post_uid = #{lastPostUid,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      view_count = #{viewCount,jdbcType=INTEGER},
+      reply_count = #{replyCount,jdbcType=INTEGER},
+      support_count = #{supportCount,jdbcType=INTEGER},
+      share_count = #{shareCount,jdbcType=INTEGER},
+      collect_count = #{collectCount,jdbcType=INTEGER},
+      sort = #{sort,jdbcType=BIT},
+      high_light = #{highLight,jdbcType=BIT},
+      is_essence = #{isEssence,jdbcType=BIT},
+      is_top = #{isTop,jdbcType=BIT},
+      attachment_id = #{attachmentId,jdbcType=INTEGER},
+      is_verify = #{isVerify,jdbcType=BIT},
+      stick_reply = #{stickReply,jdbcType=BIT},
+      status = #{status,jdbcType=TINYINT},
+      cover = #{cover,jdbcType=VARCHAR},
+      class_id = #{classId,jdbcType=INTEGER},
+      summary = #{summary,jdbcType=VARCHAR},
+      image = #{image,jdbcType=VARCHAR},
+      from = #{from,jdbcType=VARCHAR},
+      pos = #{pos,jdbcType=VARCHAR},
+      position = #{position,jdbcType=INTEGER},
+      product_id = #{productId,jdbcType=VARCHAR},
+      is_massage = #{isMassage,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      delete_reason = #{deleteReason,jdbcType=VARCHAR},
+      video_cover = #{videoCover,jdbcType=VARCHAR},
+      del_user = #{delUser,jdbcType=VARCHAR},
+      false_view = #{falseView,jdbcType=INTEGER},
+      is_weibo = #{isWeibo,jdbcType=INTEGER},
+      detail_top = #{detailTop,jdbcType=INTEGER},
+      index_top = #{indexTop,jdbcType=INTEGER},
+      is_new = #{isNew,jdbcType=INTEGER},
+      oid = #{oid,jdbcType=VARCHAR},
+      send_time = #{sendTime,jdbcType=INTEGER},
+      keywords = #{keywords,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

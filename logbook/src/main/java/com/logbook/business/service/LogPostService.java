@@ -2,7 +2,7 @@ package com.logbook.business.service;
 
 import com.logbook.business.mapper.LogPostEntityMapper;
 import com.logbook.business.model.LogPostEntity;
-import com.logbook.business.web.domian.LogPostVo;
+import com.logbook.business.web.domain.LogPostVo;
 import com.logbook.business.web.request.LogPostRequestParam;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
