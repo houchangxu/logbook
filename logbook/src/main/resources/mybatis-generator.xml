@@ -6,7 +6,7 @@
     <properties resource="mybatis-generator-config.properties"></properties>
     <!--数据库驱动-->
 
-    <classPathEntry location="C:/Users/Administrator/.m2/repository/mysql/mysql-connector-java/8.0.26/mysql-connector-java-8.0.26.jar"/>
+    <classPathEntry location="/Users/houchangxu/.m2/repository/mysql/mysql-connector-java/8.0.26/mysql-connector-java-8.0.26.jar"/>
     <context id="DB2Tables"    targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
         <commentGenerator>
@@ -21,7 +21,7 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!--生成Model类存放位置-->
-        <javaModelGenerator targetPackage="com.logbook.user.model" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.logbook.business.model" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
@@ -30,14 +30,19 @@
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!--生成Dao类存放位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.logbook.user" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.logbook.business.mapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="log_user" domainObjectName="LogUserEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
+        <table tableName="log_thread_draft" domainObjectName="LogThreadDraftEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
             <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
             <columnOverride column="image" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="video_show" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="product_id" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="video_url" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="reject_reason" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="delete_reason" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="oid" javaType="java.lang.String" jdbcType="VARCHAR" />
+            <columnOverride column="keywords" javaType="java.lang.String" jdbcType="VARCHAR" />
         </table>
 
     </context>

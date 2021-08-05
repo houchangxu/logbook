@@ -1,4 +1,4 @@
-package com.logbook.business.web.domian;
+package com.logbook.business.web.domain;
 
 import lombok.Data;
 

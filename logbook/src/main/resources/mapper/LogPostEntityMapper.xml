@@ -388,20 +388,25 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
+    <resultMap id="PageResultMap" type="com.logbook.business.web.domain.LogPostPageVo">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="nickname" jdbcType="VARCHAR" property="nickName"/>
+        <result column="view_count" jdbcType="INTEGER" property="viewCount"/>
+        <result column="title" jdbcType="VARCHAR" property="title"/>
+        <result column="content" jdbcType="VARCHAR" property="content"/>
+        <result column="image" jdbcType="VARCHAR" property="image"/>
+        <result column="author_uid" jdbcType="INTEGER" property="authorUid"/>
 
-
-
+    </resultMap>
     <sql id="Page_Column_List">
-    lp.id, tid, cid, to_reply_id, to_reply_uid, is_thread, `level`, `position`, author_uid,
-    title, create_time, update_time, status, attachment_id, is_anonymous, content, is_top,
-    comment_count, support_count, `from`, is_hide, is_essence, is_recommend, collect_count,
-    image, video_show, del_time, del_user, is_vest, event_id
+    lp.id,lu.nickname,ltd.view_count,lp.title,lp.content,lp.image,lp.author_uid
   </sql>
-    <select id="getPage" resultMap="BaseResultMap">
+    <select id="getPage" resultMap="PageResultMap">
         select
         <include refid="Page_Column_List"/>
         from log_post lp
         left join log_user lu on lp.author_uid = lu.id
+        left join log_thread_draft ltd on ltd.id = lp.tid
         where 1=1
         <if test="param.cid != null">
             and cid=#{param.cid}
@@ -409,6 +414,7 @@
         <if test="param.tid != null">
             and tid=#{param.tid}
         </if>
+        order by lp.create_time
         limit #{param.pageNo},#{param.limit}
     </select>
 </mapper>
