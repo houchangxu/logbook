@@ -11,7 +11,7 @@ public class Response<T> {
 
     private T data;
 
-    private String errorCode;
+    private Integer errorCode;
 
     private String errorMessage;
 
@@ -23,7 +23,7 @@ public class Response<T> {
         return new Response(data);
     }
 
-    public static <T> Response ofFailure(String errorCode, String errorMessage){
+    public static <T> Response ofFailure(Integer errorCode, String errorMessage){
         return new Response(null,errorCode,errorMessage);
     }
 }

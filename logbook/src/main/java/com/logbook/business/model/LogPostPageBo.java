@@ -1,11 +1,9 @@
-package com.logbook.business.web.domain;
+package com.logbook.business.model;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class LogPostPageVo {
+public class LogPostPageBo {
     private Integer id;
 
     private String nickName;
@@ -16,7 +14,7 @@ public class LogPostPageVo {
 
     private String content;
 
-    private List<String> image;
+    private String image;
 
     private String authorUid;
 

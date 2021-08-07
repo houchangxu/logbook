@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logbook.business.mapper.LogTagEntityMapper">
+  <resultMap id="BaseResultMap" type="com.logbook.business.model.LogTagEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="sort" jdbcType="TINYINT" property="sort" />
+    <result column="thread_count" jdbcType="INTEGER" property="threadCount" />
+    <result column="logo" jdbcType="VARCHAR" property="logo" />
+    <result column="background" jdbcType="VARCHAR" property="background" />
+    <result column="create_time" jdbcType="INTEGER" property="createTime" />
+    <result column="update_time" jdbcType="INTEGER" property="updateTime" />
+    <result column="allow_user_group" jdbcType="VARCHAR" property="allowUserGroup" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="admin_uid" jdbcType="INTEGER" property="adminUid" />
+    <result column="last_post_time" jdbcType="INTEGER" property="lastPostTime" />
+    <result column="level" jdbcType="SMALLINT" property="level" />
+    <result column="allow_edit_rules" jdbcType="BIT" property="allowEditRules" />
+    <result column="allow_feed" jdbcType="BIT" property="allowFeed" />
+    <result column="need_verify" jdbcType="BIT" property="needVerify" />
+    <result column="list_style" jdbcType="BIT" property="listStyle" />
+    <result column="allow_edit_post" jdbcType="BIT" property="allowEditPost" />
+    <result column="allow_global_stick" jdbcType="BIT" property="allowGlobalStick" />
+    <result column="member_count" jdbcType="INTEGER" property="memberCount" />
+    <result column="share_count" jdbcType="INTEGER" property="shareCount" />
+    <result column="post_count" jdbcType="INTEGER" property="postCount" />
+    <result column="is_private" jdbcType="BIT" property="isPrivate" />
+    <result column="support_count" jdbcType="INTEGER" property="supportCount" />
+    <result column="is_hot" jdbcType="INTEGER" property="isHot" />
+    <result column="false_num" jdbcType="INTEGER" property="falseNum" />
+    <result column="display" jdbcType="INTEGER" property="display" />
+    <result column="allow_post" jdbcType="INTEGER" property="allowPost" />
+    <result column="default_follow" jdbcType="INTEGER" property="defaultFollow" />
+    <result column="is_audit" jdbcType="INTEGER" property="isAudit" />
+    <result column="group" jdbcType="VARCHAR" property="group" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, name, title, content, type, status, sort, thread_count, logo, background, 
+    create_time, update_time, allow_user_group, summary, admin_uid, last_post_time, level, 
+    allow_edit_rules, allow_feed, need_verify, list_style, allow_edit_post, allow_global_stick, 
+    member_count, share_count, post_count, is_private, support_count, is_hot, false_num, 
+    display, allow_post, default_follow, is_audit, group
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from log_tag
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultType="com.logbook.business.model.LogTagEntity">
+    select
+    <include refid="Base_Column_List" />
+    from log_tag
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log_tag
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.logbook.business.model.LogTagEntity">
+    insert into log_tag (id, pid, name, title, 
+      content, type, status, 
+      sort, thread_count, logo, 
+      background, create_time, update_time, 
+      allow_user_group, summary, admin_uid, 
+      last_post_time, level, allow_edit_rules, 
+      allow_feed, need_verify, list_style, 
+      allow_edit_post, allow_global_stick, member_count, 
+      share_count, post_count, is_private, 
+      support_count, is_hot, false_num, 
+      display, allow_post, default_follow, 
+      is_audit, group)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, #{title,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, 
+      #{sort,jdbcType=TINYINT}, #{threadCount,jdbcType=INTEGER}, #{logo,jdbcType=VARCHAR}, 
+      #{background,jdbcType=VARCHAR}, #{createTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}, 
+      #{allowUserGroup,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{adminUid,jdbcType=INTEGER}, 
+      #{lastPostTime,jdbcType=INTEGER}, #{level,jdbcType=SMALLINT}, #{allowEditRules,jdbcType=BIT}, 
+      #{allowFeed,jdbcType=BIT}, #{needVerify,jdbcType=BIT}, #{listStyle,jdbcType=BIT}, 
+      #{allowEditPost,jdbcType=BIT}, #{allowGlobalStick,jdbcType=BIT}, #{memberCount,jdbcType=INTEGER}, 
+      #{shareCount,jdbcType=INTEGER}, #{postCount,jdbcType=INTEGER}, #{isPrivate,jdbcType=BIT}, 
+      #{supportCount,jdbcType=INTEGER}, #{isHot,jdbcType=INTEGER}, #{falseNum,jdbcType=INTEGER}, 
+      #{display,jdbcType=INTEGER}, #{allowPost,jdbcType=INTEGER}, #{defaultFollow,jdbcType=INTEGER}, 
+      #{isAudit,jdbcType=INTEGER}, #{group,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logbook.business.model.LogTagEntity">
+    insert into log_tag
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="threadCount != null">
+        thread_count,
+      </if>
+      <if test="logo != null">
+        logo,
+      </if>
+      <if test="background != null">
+        background,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="allowUserGroup != null">
+        allow_user_group,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="adminUid != null">
+        admin_uid,
+      </if>
+      <if test="lastPostTime != null">
+        last_post_time,
+      </if>
+      <if test="level != null">
+        level,
+      </if>
+      <if test="allowEditRules != null">
+        allow_edit_rules,
+      </if>
+      <if test="allowFeed != null">
+        allow_feed,
+      </if>
+      <if test="needVerify != null">
+        need_verify,
+      </if>
+      <if test="listStyle != null">
+        list_style,
+      </if>
+      <if test="allowEditPost != null">
+        allow_edit_post,
+      </if>
+      <if test="allowGlobalStick != null">
+        allow_global_stick,
+      </if>
+      <if test="memberCount != null">
+        member_count,
+      </if>
+      <if test="shareCount != null">
+        share_count,
+      </if>
+      <if test="postCount != null">
+        post_count,
+      </if>
+      <if test="isPrivate != null">
+        is_private,
+      </if>
+      <if test="supportCount != null">
+        support_count,
+      </if>
+      <if test="isHot != null">
+        is_hot,
+      </if>
+      <if test="falseNum != null">
+        false_num,
+      </if>
+      <if test="display != null">
+        display,
+      </if>
+      <if test="allowPost != null">
+        allow_post,
+      </if>
+      <if test="defaultFollow != null">
+        default_follow,
+      </if>
+      <if test="isAudit != null">
+        is_audit,
+      </if>
+      <if test="group != null">
+        group,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="threadCount != null">
+        #{threadCount,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null">
+        #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null">
+        #{background,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="allowUserGroup != null">
+        #{allowUserGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUid != null">
+        #{adminUid,jdbcType=INTEGER},
+      </if>
+      <if test="lastPostTime != null">
+        #{lastPostTime,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="allowEditRules != null">
+        #{allowEditRules,jdbcType=BIT},
+      </if>
+      <if test="allowFeed != null">
+        #{allowFeed,jdbcType=BIT},
+      </if>
+      <if test="needVerify != null">
+        #{needVerify,jdbcType=BIT},
+      </if>
+      <if test="listStyle != null">
+        #{listStyle,jdbcType=BIT},
+      </if>
+      <if test="allowEditPost != null">
+        #{allowEditPost,jdbcType=BIT},
+      </if>
+      <if test="allowGlobalStick != null">
+        #{allowGlobalStick,jdbcType=BIT},
+      </if>
+      <if test="memberCount != null">
+        #{memberCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null">
+        #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="postCount != null">
+        #{postCount,jdbcType=INTEGER},
+      </if>
+      <if test="isPrivate != null">
+        #{isPrivate,jdbcType=BIT},
+      </if>
+      <if test="supportCount != null">
+        #{supportCount,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null">
+        #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="falseNum != null">
+        #{falseNum,jdbcType=INTEGER},
+      </if>
+      <if test="display != null">
+        #{display,jdbcType=INTEGER},
+      </if>
+      <if test="allowPost != null">
+        #{allowPost,jdbcType=INTEGER},
+      </if>
+      <if test="defaultFollow != null">
+        #{defaultFollow,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null">
+        #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="group != null">
+        #{group,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logbook.business.model.LogTagEntity">
+    update log_tag
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=TINYINT},
+      </if>
+      <if test="threadCount != null">
+        thread_count = #{threadCount,jdbcType=INTEGER},
+      </if>
+      <if test="logo != null">
+        logo = #{logo,jdbcType=VARCHAR},
+      </if>
+      <if test="background != null">
+        background = #{background,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+      <if test="allowUserGroup != null">
+        allow_user_group = #{allowUserGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="adminUid != null">
+        admin_uid = #{adminUid,jdbcType=INTEGER},
+      </if>
+      <if test="lastPostTime != null">
+        last_post_time = #{lastPostTime,jdbcType=INTEGER},
+      </if>
+      <if test="level != null">
+        level = #{level,jdbcType=SMALLINT},
+      </if>
+      <if test="allowEditRules != null">
+        allow_edit_rules = #{allowEditRules,jdbcType=BIT},
+      </if>
+      <if test="allowFeed != null">
+        allow_feed = #{allowFeed,jdbcType=BIT},
+      </if>
+      <if test="needVerify != null">
+        need_verify = #{needVerify,jdbcType=BIT},
+      </if>
+      <if test="listStyle != null">
+        list_style = #{listStyle,jdbcType=BIT},
+      </if>
+      <if test="allowEditPost != null">
+        allow_edit_post = #{allowEditPost,jdbcType=BIT},
+      </if>
+      <if test="allowGlobalStick != null">
+        allow_global_stick = #{allowGlobalStick,jdbcType=BIT},
+      </if>
+      <if test="memberCount != null">
+        member_count = #{memberCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null">
+        share_count = #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="postCount != null">
+        post_count = #{postCount,jdbcType=INTEGER},
+      </if>
+      <if test="isPrivate != null">
+        is_private = #{isPrivate,jdbcType=BIT},
+      </if>
+      <if test="supportCount != null">
+        support_count = #{supportCount,jdbcType=INTEGER},
+      </if>
+      <if test="isHot != null">
+        is_hot = #{isHot,jdbcType=INTEGER},
+      </if>
+      <if test="falseNum != null">
+        false_num = #{falseNum,jdbcType=INTEGER},
+      </if>
+      <if test="display != null">
+        display = #{display,jdbcType=INTEGER},
+      </if>
+      <if test="allowPost != null">
+        allow_post = #{allowPost,jdbcType=INTEGER},
+      </if>
+      <if test="defaultFollow != null">
+        default_follow = #{defaultFollow,jdbcType=INTEGER},
+      </if>
+      <if test="isAudit != null">
+        is_audit = #{isAudit,jdbcType=INTEGER},
+      </if>
+      <if test="group != null">
+        group = #{group,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logbook.business.model.LogTagEntity">
+    update log_tag
+    set pid = #{pid,jdbcType=INTEGER},
+      name = #{name,jdbcType=CHAR},
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      sort = #{sort,jdbcType=TINYINT},
+      thread_count = #{threadCount,jdbcType=INTEGER},
+      logo = #{logo,jdbcType=VARCHAR},
+      background = #{background,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER},
+      allow_user_group = #{allowUserGroup,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      admin_uid = #{adminUid,jdbcType=INTEGER},
+      last_post_time = #{lastPostTime,jdbcType=INTEGER},
+      level = #{level,jdbcType=SMALLINT},
+      allow_edit_rules = #{allowEditRules,jdbcType=BIT},
+      allow_feed = #{allowFeed,jdbcType=BIT},
+      need_verify = #{needVerify,jdbcType=BIT},
+      list_style = #{listStyle,jdbcType=BIT},
+      allow_edit_post = #{allowEditPost,jdbcType=BIT},
+      allow_global_stick = #{allowGlobalStick,jdbcType=BIT},
+      member_count = #{memberCount,jdbcType=INTEGER},
+      share_count = #{shareCount,jdbcType=INTEGER},
+      post_count = #{postCount,jdbcType=INTEGER},
+      is_private = #{isPrivate,jdbcType=BIT},
+      support_count = #{supportCount,jdbcType=INTEGER},
+      is_hot = #{isHot,jdbcType=INTEGER},
+      false_num = #{falseNum,jdbcType=INTEGER},
+      display = #{display,jdbcType=INTEGER},
+      allow_post = #{allowPost,jdbcType=INTEGER},
+      default_follow = #{defaultFollow,jdbcType=INTEGER},
+      is_audit = #{isAudit,jdbcType=INTEGER},
+      group = #{group,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

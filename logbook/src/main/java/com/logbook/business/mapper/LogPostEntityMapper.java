@@ -1,6 +1,8 @@
 package com.logbook.business.mapper;
 
 import com.logbook.business.model.LogPostEntity;
+import com.logbook.business.model.LogPostPageBo;
+import com.logbook.business.web.domain.LogPostPageVo;
 import com.logbook.business.web.request.LogPostRequestParam;
 import org.apache.ibatis.annotations.Param;
 
@@ -19,5 +21,5 @@ public interface LogPostEntityMapper {
 
     int updateByPrimaryKey(LogPostEntity record);
 
-    List<LogPostEntity> getPage(@Param("param") LogPostRequestParam param);
+    List<LogPostPageBo> getPage(@Param("param") LogPostRequestParam param);
 }

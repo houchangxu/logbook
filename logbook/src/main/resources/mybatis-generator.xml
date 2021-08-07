@@ -6,7 +6,7 @@
     <properties resource="mybatis-generator-config.properties"></properties>
     <!--数据库驱动-->
 
-    <classPathEntry location="/Users/houchangxu/.m2/repository/mysql/mysql-connector-java/8.0.26/mysql-connector-java-8.0.26.jar"/>
+    <classPathEntry location="C:\Users\Administrator\.m2\repository\mysql\mysql-connector-java/8.0.17/mysql-connector-java-8.0.17.jar"/>
     <context id="DB2Tables"    targetRuntime="MyBatis3">
         <plugin type="org.mybatis.generator.plugins.UnmergeableXmlMappersPlugin" />
         <commentGenerator>
@@ -34,15 +34,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
         <!--生成对应表及类名-->
-        <table tableName="log_thread_draft" domainObjectName="LogThreadDraftEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
-            <columnOverride column="content" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="image" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="product_id" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="video_url" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="reject_reason" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="delete_reason" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="oid" javaType="java.lang.String" jdbcType="VARCHAR" />
-            <columnOverride column="keywords" javaType="java.lang.String" jdbcType="VARCHAR" />
+        <table tableName="log_com_topic" domainObjectName="LogComTopicEntity" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
 
     </context>

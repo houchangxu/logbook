@@ -1,0 +1,289 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.logbook.business.mapper.LogComForumEntityMapper">
+  <resultMap id="BaseResultMap" type="com.logbook.business.model.LogComForumEntity">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="pid" jdbcType="INTEGER" property="pid" />
+    <result column="type" jdbcType="SMALLINT" property="type" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="status" jdbcType="BIT" property="status" />
+    <result column="displayorder" jdbcType="SMALLINT" property="displayorder" />
+    <result column="tag_name" jdbcType="VARCHAR" property="tagName" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="rule" jdbcType="VARCHAR" property="rule" />
+    <result column="auto_check" jdbcType="BIT" property="autoCheck" />
+    <result column="logo_url" jdbcType="VARCHAR" property="logoUrl" />
+    <result column="bg_url" jdbcType="VARCHAR" property="bgUrl" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="member_count" jdbcType="INTEGER" property="memberCount" />
+    <result column="share_count" jdbcType="INTEGER" property="shareCount" />
+    <result column="post_count" jdbcType="INTEGER" property="postCount" />
+    <result column="false_num" jdbcType="INTEGER" property="falseNum" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.logbook.business.model.LogComForumEntity">
+    <result column="admin_uid" jdbcType="LONGVARCHAR" property="adminUid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, pid, type, name, status, displayorder, tag_name, content, rule, auto_check, logo_url, 
+    bg_url, create_time, update_time, member_count, share_count, post_count, false_num
+  </sql>
+  <sql id="Blob_Column_List">
+    admin_uid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Blob_Column_List" />
+    from log_com_forum
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+    <select id="selectAll" resultType="com.logbook.business.model.LogComForumEntity">
+      select
+      <include refid="Blob_Column_List" />
+      from log_com_forum
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from log_com_forum
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.logbook.business.model.LogComForumEntity">
+    insert into log_com_forum (id, pid, type, 
+      name, status, displayorder, 
+      tag_name, content, rule, 
+      auto_check, logo_url, bg_url, 
+      create_time, update_time, member_count, 
+      share_count, post_count, false_num, 
+      admin_uid)
+    values (#{id,jdbcType=INTEGER}, #{pid,jdbcType=INTEGER}, #{type,jdbcType=SMALLINT}, 
+      #{name,jdbcType=CHAR}, #{status,jdbcType=BIT}, #{displayorder,jdbcType=SMALLINT}, 
+      #{tagName,jdbcType=VARCHAR}, #{content,jdbcType=VARCHAR}, #{rule,jdbcType=VARCHAR}, 
+      #{autoCheck,jdbcType=BIT}, #{logoUrl,jdbcType=VARCHAR}, #{bgUrl,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{memberCount,jdbcType=INTEGER}, 
+      #{shareCount,jdbcType=INTEGER}, #{postCount,jdbcType=INTEGER}, #{falseNum,jdbcType=INTEGER}, 
+      #{adminUid,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.logbook.business.model.LogComForumEntity">
+    insert into log_com_forum
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="pid != null">
+        pid,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="displayorder != null">
+        displayorder,
+      </if>
+      <if test="tagName != null">
+        tag_name,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="rule != null">
+        rule,
+      </if>
+      <if test="autoCheck != null">
+        auto_check,
+      </if>
+      <if test="logoUrl != null">
+        logo_url,
+      </if>
+      <if test="bgUrl != null">
+        bg_url,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="memberCount != null">
+        member_count,
+      </if>
+      <if test="shareCount != null">
+        share_count,
+      </if>
+      <if test="postCount != null">
+        post_count,
+      </if>
+      <if test="falseNum != null">
+        false_num,
+      </if>
+      <if test="adminUid != null">
+        admin_uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="pid != null">
+        #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+      <if test="displayorder != null">
+        #{displayorder,jdbcType=SMALLINT},
+      </if>
+      <if test="tagName != null">
+        #{tagName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="rule != null">
+        #{rule,jdbcType=VARCHAR},
+      </if>
+      <if test="autoCheck != null">
+        #{autoCheck,jdbcType=BIT},
+      </if>
+      <if test="logoUrl != null">
+        #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bgUrl != null">
+        #{bgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberCount != null">
+        #{memberCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null">
+        #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="postCount != null">
+        #{postCount,jdbcType=INTEGER},
+      </if>
+      <if test="falseNum != null">
+        #{falseNum,jdbcType=INTEGER},
+      </if>
+      <if test="adminUid != null">
+        #{adminUid,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.logbook.business.model.LogComForumEntity">
+    update log_com_forum
+    <set>
+      <if test="pid != null">
+        pid = #{pid,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=SMALLINT},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIT},
+      </if>
+      <if test="displayorder != null">
+        displayorder = #{displayorder,jdbcType=SMALLINT},
+      </if>
+      <if test="tagName != null">
+        tag_name = #{tagName,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="rule != null">
+        rule = #{rule,jdbcType=VARCHAR},
+      </if>
+      <if test="autoCheck != null">
+        auto_check = #{autoCheck,jdbcType=BIT},
+      </if>
+      <if test="logoUrl != null">
+        logo_url = #{logoUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="bgUrl != null">
+        bg_url = #{bgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="memberCount != null">
+        member_count = #{memberCount,jdbcType=INTEGER},
+      </if>
+      <if test="shareCount != null">
+        share_count = #{shareCount,jdbcType=INTEGER},
+      </if>
+      <if test="postCount != null">
+        post_count = #{postCount,jdbcType=INTEGER},
+      </if>
+      <if test="falseNum != null">
+        false_num = #{falseNum,jdbcType=INTEGER},
+      </if>
+      <if test="adminUid != null">
+        admin_uid = #{adminUid,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.logbook.business.model.LogComForumEntity">
+    update log_com_forum
+    set pid = #{pid,jdbcType=INTEGER},
+      type = #{type,jdbcType=SMALLINT},
+      name = #{name,jdbcType=CHAR},
+      status = #{status,jdbcType=BIT},
+      displayorder = #{displayorder,jdbcType=SMALLINT},
+      tag_name = #{tagName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      rule = #{rule,jdbcType=VARCHAR},
+      auto_check = #{autoCheck,jdbcType=BIT},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      bg_url = #{bgUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      member_count = #{memberCount,jdbcType=INTEGER},
+      share_count = #{shareCount,jdbcType=INTEGER},
+      post_count = #{postCount,jdbcType=INTEGER},
+      false_num = #{falseNum,jdbcType=INTEGER},
+      admin_uid = #{adminUid,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.logbook.business.model.LogComForumEntity">
+    update log_com_forum
+    set pid = #{pid,jdbcType=INTEGER},
+      type = #{type,jdbcType=SMALLINT},
+      name = #{name,jdbcType=CHAR},
+      status = #{status,jdbcType=BIT},
+      displayorder = #{displayorder,jdbcType=SMALLINT},
+      tag_name = #{tagName,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      rule = #{rule,jdbcType=VARCHAR},
+      auto_check = #{autoCheck,jdbcType=BIT},
+      logo_url = #{logoUrl,jdbcType=VARCHAR},
+      bg_url = #{bgUrl,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      member_count = #{memberCount,jdbcType=INTEGER},
+      share_count = #{shareCount,jdbcType=INTEGER},
+      post_count = #{postCount,jdbcType=INTEGER},
+      false_num = #{falseNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

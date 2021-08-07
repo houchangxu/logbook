@@ -388,7 +388,7 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
 
-    <resultMap id="PageResultMap" type="com.logbook.business.web.domain.LogPostPageVo">
+    <resultMap id="PageResultMap" type="com.logbook.business.model.LogPostPageBo">
         <id column="id" jdbcType="INTEGER" property="id"/>
         <result column="nickname" jdbcType="VARCHAR" property="nickName"/>
         <result column="view_count" jdbcType="INTEGER" property="viewCount"/>
@@ -396,11 +396,10 @@
         <result column="content" jdbcType="VARCHAR" property="content"/>
         <result column="image" jdbcType="VARCHAR" property="image"/>
         <result column="author_uid" jdbcType="INTEGER" property="authorUid"/>
-
     </resultMap>
     <sql id="Page_Column_List">
-    lp.id,lu.nickname,ltd.view_count,lp.title,lp.content,lp.image,lp.author_uid
-  </sql>
+        lp.id,lu.nickname,ltd.view_count,lp.title,lp.content,lp.image,lp.author_uid
+    </sql>
     <select id="getPage" resultMap="PageResultMap">
         select
         <include refid="Page_Column_List"/>
